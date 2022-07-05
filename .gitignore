@@ -1,4 +1,4 @@
 *.a
 .DS_STORE
-.o
+*.o
 push_swap
