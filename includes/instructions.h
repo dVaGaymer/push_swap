@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   instructions.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/05 22:14:17 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/07 02:03:42 by alopez-g         ###   ########.fr       */
+/*   Created: 2022/07/07 01:37:51 by alopez-g          #+#    #+#             */
+/*   Updated: 2022/07/07 19:12:10 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-
-typedef struct s_stacks
-{
-	int		na;
-	int		nb;
-	t_list	*a;
-	t_list	*b;
-}				t_stacks;
-
-#endif
+int	sa(t_stacks stacks);
+int	sb(t_stacks stacks);
+int	ss(t_stacks stacks);
+int	pa(t_stacks stacks);
+int	pb(t_stacks stacks);
+int	ra(t_stacks stacks);
+int	rb(t_stacks stacks);
+int	rr(t_stacks stacks);
+int	rra(t_stacks stacks);
+int	rrb(t_stacks stacks);
+int	rrr(t_stacks stacks);

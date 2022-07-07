@@ -2,3 +2,4 @@
 .DS_STORE
 *.o
 push_swap
+*.swp
