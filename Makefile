@@ -6,7 +6,7 @@
 #    By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/05 22:01:15 by alopez-g          #+#    #+#              #
-#    Updated: 2022/07/07 02:27:16 by alopez-g         ###   ########.fr        #
+#    Updated: 2022/07/09 03:56:56 by alopez-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,13 +35,17 @@ I_FTPF_H = $(I_FTPF)ftpritf.h
 I_LIBFT = $(LIBFT_DIR)/includes
 I_LIBFT_H = $(I_LIBT)/libft.h
 
+M_FTPF = $(FTPF_DIR)/Makefile
+M_LIBFT = $(LIBFT_DIR)/Makefile
+
 I_DIR = $(DIR)/includes
-I_H = push_swap.h
+I_H = push_swap.h color.h
 I = $(patsubst %.h, $(I_DIR)/%.h, $(I_H))
 
 SRC_DIR = $(DIR)/src
-SRC_C = main.c
+SRC_C = colors/color.c push_swap.c main.c utils.c exec.c s.c p.c r.c rr.c
 SRC = $(patsubst %.c, $(SRC_DIR)/%.c, $(SRC_C))
+
 
 OBJ = $(patsubst %.c, %.o, $(SRC))
 
@@ -52,7 +56,7 @@ I_FLAG = -I $(I_DIR)/ -I $(I_FTPF)/ -I $(I_LIBFT)/
 	@$(CC) $(FLAGS) $(I_FLAG) -c $< -o $@
 
 all: $(NAME)
-$(NAME): $(FTPF_SRC) $(LIBFT_SRC) $(OBJ) $(I)
+$(NAME): $(FTPF_SRC) $(M_FTPF) $(LIBFT_SRC) $(M_LIBFT) $(OBJ) $(I)
 	@echo "${RED}Compiling LIBFTPRINTF${NC}\c"
 	@make -s -C $(FTPF_DIR)
 	@echo " ---> ${CYAN}Success${NC}"

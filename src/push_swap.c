@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/05 22:14:17 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/09 04:42:09 by alopez-g         ###   ########.fr       */
+/*   Created: 2022/07/08 22:13:07 by alopez-g          #+#    #+#             */
+/*   Updated: 2022/07/08 23:11:35 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
+#include "instructions.h"
 
-#include "libft.h"
-typedef	struct s_num
+int	push_swap(t_stack *st)
 {
-	int	num;
-	int	order;
-}				t_num;
-typedef struct s_stack
-{
-	int		na;
-	int		nb;
-	t_list	*a;
-	t_list	*b;
-}				t_stack;
-int	push_swap(t_stack *st);
-void	parse_args(int argc, char **argv, t_stack *st);
-void	print_status(t_stack st);
+	instr	*i;
+	
+	i = malloc(sizeof(instr) * 3 + 1);
+	*(i) = pa;
+	*(i + 1) = pa;
+	*(i + 2) = pa;
+	*(i + 3) = 0;
 
-
-#endif
+	print_status(*st);
+	//exec_instr(st, i);
+	print_status(*st);
+	ft_lstiter(st->a, free);
+	ft_lstiter(st->b, free);
+	return (0);
+}

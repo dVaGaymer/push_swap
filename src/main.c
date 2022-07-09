@@ -6,61 +6,83 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 22:13:53 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/07 19:10:55 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/09 04:40:42 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-	#include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include "ft_printf.h"
 #include "libft.h"
 #include "push_swap.h"
+#include "instructions.h"
+#include <stdio.h>
+#include "color.h"
 
-t_stacks	parse_args(int argc, char **argv)
+instr	str_to_instr(char *str)
 {
-	char		aux;
-	int			*n;
-	t_stacks	s;
-	t_list		*l;
-
-	aux = 0;
-	if (!argc)
+	if (*str == 's')
 	{
-		write(1, "Usage: push_swap ...\n", 21);
-		exit (1);
+		if (*(str + 1) == 'a')
+			return &sa;
+		if (*(str + 1) == 'b')
+			return &sb;
+		if (*(str + 1) == 's')
+			return &ss;
 	}
-	s.na = argc--;
-	s.nb = 0;
-	while (argc-- >= 0)
+	else if (*str == 'p')
 	{
-		n = malloc(sizeof(int));
-		*n = ft_atoi(*(argv++));
-		l = ft_lstnew((void *)n);
-		ft_lstadd_back(&s.a, l);
+		if (*(str + 1) == 'a')
+			return &pa;
+		if (*(str + 1) == 'b')
+			return &pb;
 	}
-	return (s);
-}
-
-void	print_content(void	*content)
-{
-	printf("%-5d", *((int *)content));
-}
-
-void	ft_print_content(void	*content)
-{
-	ft_printf("%-5d", *((int *)content));
+	else if (*str == 'r')
+	{
+		if (*(str + 1) == 'a')
+			return &ra;
+		if (*(str + 1) == 'b')
+			return &rb;
+		if (*(str + 1) == 'b')
+			return &rr;
+	}
+	else if (*str == 'r' && (*str + 1) == 'r')
+	{
+		if (*(str + 2) == 'a')
+			return &rra;
+		if (*(str + 2) == 'b')
+			return &rrb;
+		if (*(str + 2) == 'r')
+			return &rrr;
+	}
 }
 
 int	main(int argc, char **argv)
 {
-	t_stacks	s;
+	t_stack	st;
+	int		moves;
+	char	c[2];
+	instr	i;
+	char	flag;
 
-	s = parse_args(argc - 1, argv + 1);
-	ft_lstiter(s.a, ft_print_content);
-	write(1, "\n", 1);
-	ft_lstiter(s.a, print_content);
-	ft_lstiter(s.a, free);
-	ft_lstiter(s.b, free);
+	st.a = 0;
+	st.b = 0;
+	parse_args(argc - 1, argv + 1, &st);
+	print_status(st);
+	ra(&st);
+	ra(&st);
+	ra(&st);
+	print_status(st);
+	mapper(0, 10, 0, 255, 5);
+	ft_printf("HOLA\e[0m");
+	while (1)
+	{
+		scanf("%2s", c);
+		write(1, "\n", 1);
+		i = str_to_instr(c);
+		i(&st);
+		print_status(st);
+	}
+	moves = push_swap(&st);
 	return (0);
 }

@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   p.c                                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/05 22:14:17 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/09 04:42:09 by alopez-g         ###   ########.fr       */
+/*   Created: 2022/07/07 21:56:49 by alopez-g          #+#    #+#             */
+/*   Updated: 2022/07/08 23:29:44 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-
 #include "libft.h"
-typedef	struct s_num
-{
-	int	num;
-	int	order;
-}				t_num;
-typedef struct s_stack
-{
-	int		na;
-	int		nb;
-	t_list	*a;
-	t_list	*b;
-}				t_stack;
-int	push_swap(t_stack *st);
-void	parse_args(int argc, char **argv, t_stack *st);
-void	print_status(t_stack st);
+#include "push_swap.h"
 
+t_list*	_p(t_list **src, t_list **dest)
+{
+	t_list	*second;
 
-#endif
+	second = (*src)->next;
+	ft_lstadd_front(dest, *src);
+	return (second);
+}
+
+void	pa(t_stack *stacks)
+{
+	stacks->a = _p(&(stacks->a), &(stacks->b));
+	stacks->na--;
+	stacks->nb++;
+}
+
+void	pb(t_stack *stacks)
+{
+	stacks->b = _p(&(stacks->b), &(stacks->a));
+	stacks->na++;
+	stacks->nb--;
+}

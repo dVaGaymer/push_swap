@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/05 22:14:17 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/09 04:42:09 by alopez-g         ###   ########.fr       */
+/*   Created: 2022/07/09 01:41:53 by alopez-g          #+#    #+#             */
+/*   Updated: 2022/07/09 04:39:56 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-
+#include "ft_printf.h"
 #include "libft.h"
-typedef	struct s_num
-{
-	int	num;
-	int	order;
-}				t_num;
-typedef struct s_stack
-{
-	int		na;
-	int		nb;
-	t_list	*a;
-	t_list	*b;
-}				t_stack;
-int	push_swap(t_stack *st);
-void	parse_args(int argc, char **argv, t_stack *st);
-void	print_status(t_stack st);
 
+// "\e[48;2;${r};${g};${b}mr${r}g${g}b${b}\e[0m"
+void	mapper(int a, int b, int c, int d, int n)
+{
+	int		red;
+	int		green;
+	int		blue;
+	char	*color;
 
-#endif
+	green = 0;
+	red = c + (d-c)/(b-a) * (n - a);
+	blue = 255 - red;
+	color = ft_itoa(red);
+	ft_printf("\e[38;2;%d;%d;%dm", red, green, blue);
+}
