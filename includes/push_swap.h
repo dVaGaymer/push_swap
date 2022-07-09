@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 22:14:17 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/09 04:42:09 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/09 06:43:42 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,9 @@
 # define PUSH_SWAP_H
 
 #include "libft.h"
-typedef	struct s_num
-{
-	int	num;
-	int	order;
-}				t_num;
 typedef struct s_stack
 {
+	int		total;
 	int		na;
 	int		nb;
 	t_list	*a;
