@@ -6,7 +6,7 @@
 #    By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/05 22:01:15 by alopez-g          #+#    #+#              #
-#    Updated: 2022/07/09 03:56:56 by alopez-g         ###   ########.fr        #
+#    Updated: 2022/07/10 01:50:46 by alopez-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,41 +19,56 @@ NC = \033[0m
 DIR = .
 NAME = $(DIR)/push_swap
 
-FTPF_DIR = $(DIR)/src/ft_printf
-LIBFT_DIR = $(FTPF_DIR)/srcs/Libft
-FTPF_LIB = ftprintf
-FTPF_A = $(FTPF_DIR)/lib$(FTPF_LIB).a
+#---------- LIBS ---------------------------------------------------------------
+	#---------- FTPF -----------------------------------------------------------
+M_FTPF = $(FTPF_DIR)/Makefile
 
+FTPF_LIB = ftprintf
+FTPF_DIR = $(DIR)/src/ft_printf
 FTPF_SRC_DIR = $(DIR)/src/ft_printf/srcs
 FTPF_SRC = $(wildcard $(FTPF_SRC_DIR)/*.c)
-LIBFT_SRC_DIR = $(DIR)/src/ft_printf/srcs/Libft/srcs
-LIBFT_SRC = $(wildcard $(LIBFT_SRC_DIR)/*.c)
+FTPF_A = $(FTPF_DIR)/lib$(FTPF_LIB).a
 
 I_FTPF = $(FTPF_DIR)/includes
 I_FTPF_H = $(I_FTPF)ftpritf.h
 
+	#---------- LIBFT ----------------------------------------------------------
+M_LIBFT = $(LIBFT_DIR)/Makefile
+
+LIBFT_DIR = $(FTPF_DIR)/srcs/Libft
+LIBFT_SRC_DIR = $(DIR)/src/ft_printf/srcs/Libft/srcs
+LIBFT_SRC = $(wildcard $(LIBFT_SRC_DIR)/*.c)
+
 I_LIBFT = $(LIBFT_DIR)/includes
 I_LIBFT_H = $(I_LIBT)/libft.h
 
-M_FTPF = $(FTPF_DIR)/Makefile
-M_LIBFT = $(LIBFT_DIR)/Makefile
-
+#---------- PUSH SWAP ----------------------------------------------------------
+#---------- INCLUDES ----------
 I_DIR = $(DIR)/includes
 I_H = push_swap.h color.h
 I = $(patsubst %.h, $(I_DIR)/%.h, $(I_H))
 
+#---------- SRC ----------
 SRC_DIR = $(DIR)/src
-SRC_C = colors/color.c push_swap.c main.c utils.c exec.c s.c p.c r.c rr.c
-SRC = $(patsubst %.c, $(SRC_DIR)/%.c, $(SRC_C))
-
-
+SRC_COLOR = $(SRC_DIR)/colors
+SRC_INSTR = $(SRC_DIR)/instr
+SRC_COLOR_C = color.c
+SRC_INSTR_C = exec.c s.c p.c r.c rr.c 
+SRC_C = push_swap.c main.c utils.c 
+SRC = $(patsubst %.c, $(SRC_DIR)/%.c, $(SRC_C)) \
+		$(patsubst %.c, $(SRC_COLOR)/%.c, $(SRC_COLOR_C)) \
+		$(patsubst %.c, $(SRC_INSTR)/%.c, $(SRC_INSTR_C)) 
+#---------- OBJ ----------
 OBJ = $(patsubst %.c, %.o, $(SRC))
 
+#---------- FLAGS ----------
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
 I_FLAG = -I $(I_DIR)/ -I $(I_FTPF)/ -I $(I_LIBFT)/
+
 %.o : %.c
 	@$(CC) $(FLAGS) $(I_FLAG) -c $< -o $@
+#-------------------------------------------------------------------------------
 
 all: $(NAME)
 $(NAME): $(FTPF_SRC) $(M_FTPF) $(LIBFT_SRC) $(M_LIBFT) $(OBJ) $(I)

@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 18:27:00 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/09 18:28:52 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/10 02:10:56 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 #include "ft_printf.h"
 #include "libft.h"
 #include "color.h"
+		#include "stdio.h"
 
-void	mapper(int a, int b, int c, int d, int n)
+void	mapper(t_stack st, int n)
 {
 	int		red;
 	int		green;
@@ -23,13 +24,13 @@ void	mapper(int a, int b, int c, int d, int n)
 	char	*color;
 
 	green = 0;
-	red = c + (d-c)/(b-a) * (n - a);
+	red = *(st.crange) + ((*(st.crange + 1) - *(st.crange)) / st.total) * n;
 	blue = 255 - red;
 	color = ft_itoa(red);
 	ft_printf("\e[38;2;%d;%d;%dm", red, green, blue);
 }
 
-void	order(t_stack *stack)
+void	lstorder(t_stack *stack)
 {
 	int		n;
 	int		max;
@@ -41,8 +42,9 @@ void	order(t_stack *stack)
 	while (n >= 0)
 	{
 		l = ft_lstmax(stack->a, max);
-		ft_printf("(%d)", ((t_num *)(l->content))->num);
 		((t_num *)(l->content))->order = n;
+					ft_printf("|||%d|||", ((t_num *)(l->content))->order);
+					fflush(stdout);
 		max = ((t_num *)(l->content))->num;
 		n--;
 	}

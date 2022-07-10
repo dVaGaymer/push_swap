@@ -1,15 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.h                                            :+:      :+:    :+:   */
+/*   s.c                                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/09 03:52:34 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/10 02:06:23 by alopez-g         ###   ########.fr       */
+/*   Created: 2022/07/07 19:35:23 by alopez-g          #+#    #+#             */
+/*   Updated: 2022/07/08 23:29:05 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	mapper(t_stack st, int n);
-void	lstorder(t_stack *stack);
-t_list	*ft_lstmax(t_list *lst, int limit);
+#include "push_swap.h"
+#include "libft.h"
+#include "ft_printf.h"
+
+void	s(t_list **l)
+{
+	t_list *d1, *d2, *d3;
+
+	d1 = (*l);
+	d2 = (*l)->next;
+	d3 = (*l)->next->next;
+	d1->next = d3;
+	d2->next = d1;
+	*l = d2;
+}
+
+void	sa(t_stack *stacks)
+{
+	s(&(stacks->a));
+}
+
+void	sb(t_stack *stacks)
+{
+	s(&(stacks->b));
+}
+
+void	ss(t_stack *stacks)
+{
+	s(&(stacks->a));
+	s(&(stacks->b));
+}

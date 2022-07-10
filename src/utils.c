@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 22:27:04 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/09 06:43:37 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/10 02:07:32 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "libft.h"
 #include "color.h"
 
-void	parse_args(int argc, char **argv, t_stack *st)
+int	parse_args(int argc, char **argv, t_stack *st)
 {
 	char		aux;
 	t_num		*n;
@@ -24,10 +24,7 @@ void	parse_args(int argc, char **argv, t_stack *st)
 
 	aux = 0;
 	if (!argc)
-	{
-		write(1, "Usage: push_swap ...\n", 21);
-		exit (1);
-	}
+		return (1);
 	st->na = argc--;
 	st->total = st->na;
 	st->nb = 0;
@@ -35,9 +32,13 @@ void	parse_args(int argc, char **argv, t_stack *st)
 	{
 		n = malloc(sizeof(t_num));
 		n->num = ft_atoi(*(argv++));
+		if (n->num == 0 && **(argv - 1) != 48)
+			return (1);
 		l = ft_lstnew((void *)n);
 		ft_lstadd_back(&(st->a), l);
 	}
+	lstorder(st);
+	return 0;
 }
 
 void	print_status(t_stack st)
@@ -51,22 +52,20 @@ void	print_status(t_stack st)
 	{
 		if (nmax <= st.na)
 		{
-			mapper(0, st.total, 0, 255, (int)((t_num *)(st.a->content))->order);
-			ft_printf("%d ", (int)((t_num *)(st.a->content))->num);
+			mapper(st, (int)((t_num *)(st.a->content))->order);
+			ft_printf("%d ", (int)((t_num *)(st.a->content))->order);
 			ft_printf("\e[0m");
 			st.a = st.a->next;
 		}
-		else
-			write(1, " ", 2);
-		if (nmax <= st.nb)
+		write(1, "|", 1);
+		if (nmax-- <= st.nb)
 		{
-			mapper(0, st.total, 0, 255, (int)((t_num *)(st.b->content))->order);
-			ft_printf("%d", (int)((t_num *)(st.b->content))->num);
+			mapper(st, (int)((t_num *)(st.b->content))->order);
+			ft_printf("%d", (int)((t_num *)(st.b->content))->order);
 			ft_printf("\e[0m");
 			st.b = st.b->next;
 		}
 		write(1, "\n", 1);
-		nmax--;
 	}
-	ft_printf("- -\na b\n----------------\n");
+	ft_printf("- -\na%d b%d\n----------------\n", st.na, st.nb);
 }

@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 22:13:53 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/09 18:12:37 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/10 02:07:39 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ instr	str_to_instr(char *str)
 		if (*(str + 1) == 'r')
 			return &rr;
 	}
+	return (0);
 }
 
 int	main(int argc, char **argv)
@@ -66,17 +67,18 @@ int	main(int argc, char **argv)
 	instr	i;
 
 	st.a = 0;
-	st.b = 0;
-	parse_args(argc - 1, argv + 1, &st);
-	order(&st);
-	//print_status(st);
-	//ra(&st);
-	//ra(&st);
-	//ra(&st);
+	*(st.crange) = 0;
+	*(st.crange + 1) = 255;
+	if (parse_args(argc - 1, argv + 1, &st))
+		exit(1);
+	print_status(st);
+	rra(&st);
 	print_status(st);
 	while (1)
 	{
 		scanf("%3s", c);
+		if (*c == 'x')
+			return (1);
 		write(1, "\n", 1);
 		i = str_to_instr(c);
 		i(&st);
