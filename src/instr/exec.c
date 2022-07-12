@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 01:09:48 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/08 23:28:44 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/12 06:55:39 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "ft_printf.h"
 #include <unistd.h>
 
-void	check_s(instr i)
+void	check_s(t_instr i)
 {
 	if (sa == i)
 		ft_printf("sa");
@@ -25,7 +25,7 @@ void	check_s(instr i)
 		ft_printf("ss");
 }
 
-void	check_p(instr i)
+void	check_p(t_instr i)
 {
 	if (pa == i)
 		ft_printf("pa");
@@ -33,7 +33,7 @@ void	check_p(instr i)
 		ft_printf("pb");
 }
 
-void	check_r(instr i)
+void	check_r(t_instr i)
 {
 	if (ra == i)
 		ft_printf("ra");
@@ -43,7 +43,7 @@ void	check_r(instr i)
 		ft_printf("rr");
 }
 
-void	check_rr(instr i)
+void	check_rr(t_instr i)
 {
 	if (rra == i)
 		ft_printf("rra");
@@ -53,21 +53,35 @@ void	check_rr(instr i)
 		ft_printf("rrr");
 }
 
-void	exec_instr(t_stack *st, instr *i)
+
+void	print_instr(t_stack *st)
 {
-	ft_printf("Exec: ");
-	while (*i)
+	t_list *ins;
+
+	ins = st->i;
+	while (ins)
 	{
-		(*i)(st);
-		check_s(*i);
-		write(1, " ", 1);
-		check_p(*i);
-		write(1, " ", 1);
-		check_r(*i);
-		write(1, " ", 1);
-		check_rr(*i);
-		write(1, " ", 1);
-		i++;
+		check_s((t_instr)ins->content);
+		check_p((t_instr)ins->content);
+		check_r((t_instr)ins->content);
+		check_rr((t_instr)ins->content);
+		ft_putchar_fd('\n', 1);
+		ins = ins->next;
 	}
-	write(1, "\n", 1);
+	if (ins)
+		((t_instr)ins->content)(st);
+}
+
+void	exec_instr(t_stack *st)
+{
+	t_list *ins;
+
+	ins = st->i;
+	while (ins)
+	{
+		((t_instr)ins->content)(st);
+		ins = ins->next;
+	}
+	if (ins)
+		((t_instr)ins->content)(st);
 }

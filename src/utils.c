@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 22:27:04 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/10 02:07:32 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/11 19:55:18 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,14 @@ int	parse_args(int argc, char **argv, t_stack *st)
 	{
 		n = malloc(sizeof(t_num));
 		n->num = ft_atoi(*(argv++));
-		if (n->num == 0 && **(argv - 1) != 48)
-			return (1);
+		if ((n->num == 0 && **(argv - 1) != 48)
+			|| n->num > 2147483647 || n->num < -2147483648)
+			return (2);
 		l = ft_lstnew((void *)n);
 		ft_lstadd_back(&(st->a), l);
 	}
 	lstorder(st);
-	return 0;
+	return (0);
 }
 
 void	print_status(t_stack st)
@@ -53,7 +54,7 @@ void	print_status(t_stack st)
 		if (nmax <= st.na)
 		{
 			mapper(st, (int)((t_num *)(st.a->content))->order);
-			ft_printf("%d ", (int)((t_num *)(st.a->content))->order);
+			ft_printf("%d ", (int)((t_num *)(st.a->content))->num);
 			ft_printf("\e[0m");
 			st.a = st.a->next;
 		}
@@ -61,11 +62,11 @@ void	print_status(t_stack st)
 		if (nmax-- <= st.nb)
 		{
 			mapper(st, (int)((t_num *)(st.b->content))->order);
-			ft_printf("%d", (int)((t_num *)(st.b->content))->order);
+			ft_printf("%d", (int)((t_num *)(st.b->content))->num);
 			ft_printf("\e[0m");
 			st.b = st.b->next;
 		}
 		write(1, "\n", 1);
 	}
-	ft_printf("- -\na%d b%d\n----------------\n", st.na, st.nb);
+	ft_printf("- -\na b\n----------------\n");
 }

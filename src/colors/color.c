@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 18:27:00 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/10 02:10:56 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/12 08:29:36 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,16 @@
 #include "ft_printf.h"
 #include "libft.h"
 #include "color.h"
-		#include "stdio.h"
 
 void	mapper(t_stack st, int n)
 {
 	int		red;
 	int		green;
 	int		blue;
-	char	*color;
 
 	green = 0;
 	red = *(st.crange) + ((*(st.crange + 1) - *(st.crange)) / st.total) * n;
 	blue = 255 - red;
-	color = ft_itoa(red);
 	ft_printf("\e[38;2;%d;%d;%dm", red, green, blue);
 }
 
@@ -43,14 +40,12 @@ void	lstorder(t_stack *stack)
 	{
 		l = ft_lstmax(stack->a, max);
 		((t_num *)(l->content))->order = n;
-					ft_printf("|||%d|||", ((t_num *)(l->content))->order);
-					fflush(stdout);
 		max = ((t_num *)(l->content))->num;
 		n--;
 	}
 }
 
-t_list	*ft_lstmax(t_list *lst, int	limit)
+t_list	*ft_lstmax(t_list *lst, int limit)
 {
 	t_list	*l;
 	int		max;
@@ -61,7 +56,7 @@ t_list	*ft_lstmax(t_list *lst, int	limit)
 		return (0);
 	while (lst->next)
 	{
-		aux = (int)((t_num *)(lst->content))->num; 
+		aux = (int)((t_num *)(lst->content))->num;
 		if (aux > max && aux < limit)
 		{
 			max = aux;
@@ -69,7 +64,7 @@ t_list	*ft_lstmax(t_list *lst, int	limit)
 		}
 		lst = lst->next;
 	}
-	aux = (int)((t_num *)(lst->content))->num; 
+	aux = (int)((t_num *)(lst->content))->num;
 	if (aux > max && aux < limit)
 	{
 		max = aux;

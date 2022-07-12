@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 22:13:53 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/10 02:07:39 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/12 06:56:30 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include <stdio.h>
 #include "color.h"
 
-instr	str_to_instr(char *str)
+t_instr	str_to_instr(char *str)
 {
 	if (*str == 's')
 	{
@@ -63,27 +63,22 @@ int	main(int argc, char **argv)
 {
 	t_stack	st;
 	int		moves;
-	char	c[2];
-	instr	i;
+	int		err;
 
 	st.a = 0;
+	st.b = 0;
 	*(st.crange) = 0;
 	*(st.crange + 1) = 255;
-	if (parse_args(argc - 1, argv + 1, &st))
+	err = parse_args(argc - 1, argv + 1, &st);
+	if (err == 1)
 		exit(1);
-	print_status(st);
-	rra(&st);
-	print_status(st);
-	while (1)
+	else if (err)
 	{
-		scanf("%3s", c);
-		if (*c == 'x')
-			return (1);
-		write(1, "\n", 1);
-		i = str_to_instr(c);
-		i(&st);
-		print_status(st);
+		ft_putstr_fd("Error\n", 2);
+		exit(1);
 	}
 	moves = push_swap(&st);
+	ft_lstiter(st.a, free);
+	ft_lstiter(st.b, free);
 	return (0);
 }
