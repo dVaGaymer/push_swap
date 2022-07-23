@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 22:13:53 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/12 06:56:30 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/12 12:09:00 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,46 +18,6 @@
 #include "instructions.h"
 #include <stdio.h>
 #include "color.h"
-
-t_instr	str_to_instr(char *str)
-{
-	if (*str == 's')
-	{
-		if (*(str + 1) == 'a')
-			return &sa;
-		if (*(str + 1) == 'b')
-			return &sb;
-		if (*(str + 1) == 's')
-			return &ss;
-	}
-	else if (*str == 'p')
-	{
-		if (*(str + 1) == 'a')
-			return &pa;
-		if (*(str + 1) == 'b')
-			return &pb;
-	}
-	else if (*str == 'r' && *(str + 1) == 'r' &&
-			(*(str +  2) == 'r' || *(str + 2) == 'a' || *(str + 2) == 'b'))
-	{
-		if (*(str + 2) == 'a')
-			return &rra;
-		if (*(str + 2) == 'b')
-			return &rrb;
-		if (*(str + 2) == 'r')
-			return &rrr;
-	}
-	else if (*str == 'r')
-	{
-		if (*(str + 1) == 'a')
-			return &ra;
-		if (*(str + 1) == 'b')
-			return &rb;
-		if (*(str + 1) == 'r')
-			return &rr;
-	}
-	return (0);
-}
 
 int	main(int argc, char **argv)
 {

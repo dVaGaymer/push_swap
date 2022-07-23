@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 20:56:37 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/12 06:02:19 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/16 07:11:22 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,18 @@ void	rr(t_stack *stacks)
 	_r(&(stacks->b));
 }
 
-void	rab(t_stack *stacks, char	sel)
+void	rab(t_stack *stacks, t_list **sel, t_list **other)
 {
-	if (sel == A)
+	if (*sel == stacks->a)
+	{
 		ra(stacks);
+		*sel = stacks->a;
+		*other = stacks->b;
+	}
 	else
+	{
 		rb(stacks);
+		*sel = stacks->b;
+		*other = stacks->a;
+	}
 }

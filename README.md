@@ -1,9 +1,9 @@
-sa/b/s (swap a/b/s)
-	- swap first two at top of a/b
-pa/b
-	- (take first element of a/b and place it on top of b/a)
-	nothing if empty
-ra/b/r
-	- shift up all elements by 1
-rra/b/r
-	- shift down all element by 1
+2n : 2 Movimientos
+
+3n : Entre 2 y 3 movimientos
+
+5n : Entre 7 y 12 movimietnos
+
+100n : Entre 500 y 700 movimientos
+
+500n : Entre 5100 y 5500 movimientos

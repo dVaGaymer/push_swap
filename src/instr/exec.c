@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 01:09:48 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/12 06:55:39 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/12 12:07:44 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,9 @@ void	check_rr(t_instr i)
 		ft_printf("rrr");
 }
 
-
 void	print_instr(t_stack *st)
 {
-	t_list *ins;
+	t_list	*ins;
 
 	ins = st->i;
 	while (ins)
@@ -74,7 +73,7 @@ void	print_instr(t_stack *st)
 
 void	exec_instr(t_stack *st)
 {
-	t_list *ins;
+	t_list	*ins;
 
 	ins = st->i;
 	while (ins)

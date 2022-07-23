@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 21:56:49 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/12 06:06:39 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/16 07:10:16 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,18 @@ void	pb(t_stack *stacks)
 	ft_lstadd_back(&(stacks->i), ft_lstnew(pb));
 }
 
-void	pab(t_stack *stacks, char sel)
+void	pab(t_stack *stacks, t_list **sel, t_list **other)
 {
-	if (sel == A)
+	if (*sel == stacks->a)
+	{
 		pa(stacks);
+		*sel = stacks->a;
+		*other = stacks->b;
+	}
 	else
+	{
 		pb(stacks);
+		*sel = stacks->b;
+		*other = stacks->a;
+	}
 }
