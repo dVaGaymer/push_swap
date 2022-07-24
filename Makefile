@@ -6,7 +6,7 @@
 #    By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/05 22:01:15 by alopez-g          #+#    #+#              #
-#    Updated: 2022/07/24 00:33:43 by alopez-g         ###   ########.fr        #
+#    Updated: 2022/07/24 03:51:16 by alopez-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,19 +68,22 @@ OBJ_INSTR 		= $(patsubst $(SRC_INSTR)/%.c, $(BUILD_DIR)/%.o, \
 OBJ_COLOR 		= $(patsubst $(SRC_COLOR)/%.c, $(BUILD_DIR)/%.o, \
 					$(patsubst %.c, $(SRC_COLOR)/%.c, $(SRC_COLOR_C)))
 OBJ 			= $(OBJ_PS) $(OBJ_INSTR) $(OBJ_COLOR)
-OBJ				= $(patsubst %.c, %.o, $(SRC))
 
 #---------- FLAGS ----------
 CC 				= gcc
 FLAGS 			= -Wall -Wextra -Werror
 I_FLAG 			= -I $(I_DIR)/ -I $(I_FTPF)/ -I $(I_LIBFT)/
 
-%.o : %.c
+$(BUILD_DIR)/%.o : $(SRC_DIR)/%.c
+	@$(CC) $(FLAGS) $(I_FLAG)  -c $< -o $@
+$(BUILD_DIR)/%.o : $(SRC_INSTR)/%.c
+	@$(CC) $(FLAGS) $(I_FLAG)  -c $< -o $@
+$(BUILD_DIR)/%.o : $(SRC_COLOR)/%.c
 	@$(CC) $(FLAGS) $(I_FLAG)  -c $< -o $@
 #-------------------------------------------------------------------------------
 
 all: $(NAME)
-$(NAME): $(SRC) $(OBJ) $(FTPF_SRC) $(M_FTPF) $(LIBFT_SRC) $(M_LIBFT) $(I)
+$(NAME): $(OBJ) $(FTPF_SRC) $(M_FTPF) $(LIBFT_SRC) $(M_LIBFT) $(I)
 	@echo "${RED}Compiling LIBFTPRINTF${NC}\c"
 	@make -s -C $(FTPF_DIR)
 	@echo " ---> ${CYAN}Success${NC}"

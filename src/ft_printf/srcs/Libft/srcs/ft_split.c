@@ -6,13 +6,13 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 16:42:33 by alopez-g          #+#    #+#             */
-/*   Updated: 2020/07/07 17:15:37 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/24 05:19:57 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-static int				split_count(char const *s, char c)
+static int	split_count(char const *s, char c)
 {
 	int	cnt;
 	int	aux;
@@ -31,7 +31,7 @@ static int				split_count(char const *s, char c)
 	return (cnt);
 }
 
-static char				*allocate_substr(char const *s, char c)
+static char	*allocate_substr(char const *s, char c)
 {
 	char	*sub_splitted;
 	int		cnt;
@@ -39,7 +39,8 @@ static char				*allocate_substr(char const *s, char c)
 	cnt = 0;
 	while (*(s + cnt) != c && *(s + cnt))
 		cnt++;
-	if (!(sub_splitted = (char *)malloc(sizeof(char) * (cnt + 1))))
+	sub_splitted = (char *)malloc(sizeof(char) * (cnt + 1));
+	if (!sub_splitted)
 		return (0);
 	*(sub_splitted + cnt) = '\0';
 	cnt = 0;
@@ -51,21 +52,21 @@ static char				*allocate_substr(char const *s, char c)
 	return (sub_splitted);
 }
 
-static const char		*skip_sep(const char *s, char c)
+static const char	*skip_sep(const char *s, char c)
 {
 	while (*s == c)
 		s++;
 	return (s);
 }
 
-static const char		*skip_to_sep(const char *s, char c)
+static const char	*skip_to_sep(const char *s, char c)
 {
 	while (*s != c && *s)
 		s++;
 	return (s);
 }
 
-char					**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char	**splitted;
 	int		cnt;
@@ -81,15 +82,15 @@ char					**ft_split(char const *s, char c)
 	}
 	aux = 0;
 	cnt = split_count(s, c);
-	if (!(splitted = (char **)malloc(sizeof(char *) * (cnt + 1))))
+	splitted = (char **)malloc(sizeof(char *) * (cnt + 1));
+	if (!splitted)
 		return (0);
 	*(splitted + cnt) = NULL;
 	while (aux < cnt)
 	{
 		s = skip_sep(s, c);
-		*(splitted + aux) = allocate_substr(s, c);
+		*(splitted + aux++) = allocate_substr(s, c);
 		s = skip_to_sep(s, c);
-		aux++;
 	}
 	return (splitted);
 }

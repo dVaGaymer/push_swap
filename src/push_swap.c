@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 22:13:07 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/16 07:52:20 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/25 00:37:44 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,6 +187,14 @@ int	ordered(t_list *l)
 		l2 = l1->next;
 	}
 	return (0);
+}
+
+char	bit(int num, char bit)
+{
+	char f;
+
+	f = num & (0x1 << bit);
+	return (f);
 }
 
 int	push_swap(t_stack *st)

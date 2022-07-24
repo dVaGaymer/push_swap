@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:28:17 by alopez-g          #+#    #+#             */
-/*   Updated: 2020/07/07 17:15:04 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/24 05:16:29 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	t_list *l;
-	t_list *aux;
+	t_list	*l;
+	t_list	*aux;
 
 	l = *lst;
 	while (l != 0)

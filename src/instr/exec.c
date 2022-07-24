@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 01:09:48 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/12 12:07:44 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/24 05:28:38 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	print_instr(t_stack *st)
 	if (ins)
 		((t_instr)ins->content)(st);
 }
-
+/*
 void	exec_instr(t_stack *st)
 {
 	t_list	*ins;
@@ -84,3 +84,4 @@ void	exec_instr(t_stack *st)
 	if (ins)
 		((t_instr)ins->content)(st);
 }
+*/

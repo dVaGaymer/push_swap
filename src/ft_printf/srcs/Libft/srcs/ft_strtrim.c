@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 12:19:02 by alopez-g          #+#    #+#             */
-/*   Updated: 2020/07/07 17:16:18 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/24 05:22:36 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	final_index(char const *s1, char const *set)
 	return (len);
 }
 
-char		*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	int		start;
 	int		len;

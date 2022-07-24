@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 13:22:50 by alopez-g          #+#    #+#             */
-/*   Updated: 2020/07/11 19:45:24 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/24 05:16:14 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	udigit(unsigned int n)
 	return (aux);
 }
 
-char		*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	char	*str;
 	int		len;
@@ -55,8 +55,11 @@ char		*ft_itoa(int n)
 
 	nb = (long)n;
 	aux = 0;
-	len = (nb < 0) ? digit(nb) + 1 : digit(nb);
-	if (!(str = (char *)malloc(sizeof(char) * len + 1)))
+	len = digit(nb);
+	if (nb < 0)
+		len++;
+	str = (char *)malloc(sizeof(char) * len + 1);
+	if (!str)
 		return (0);
 	*(str + len--) = 0;
 	if (nb < 0)
@@ -72,7 +75,7 @@ char		*ft_itoa(int n)
 	return (str);
 }
 
-char		*ft_uitoa(int n)
+char	*ft_uitoa(int n)
 {
 	char			*str;
 	int				len;
@@ -81,8 +84,11 @@ char		*ft_uitoa(int n)
 
 	nb = (unsigned int)n;
 	aux = 0;
-	len = (nb < 0) ? udigit(nb) + 1 : udigit(nb);
-	if (!(str = (char *)malloc(sizeof(char) * len + 1)))
+	len = udigit(nb);
+	if (nb < 0)
+		len++;
+	str = (char *)malloc(sizeof(char) * len + 1);
+	if (!str)
 		return (0);
 	*(str + len--) = 0;
 	if (nb < 0)

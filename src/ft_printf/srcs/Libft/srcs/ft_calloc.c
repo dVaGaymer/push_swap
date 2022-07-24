@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 08:13:02 by alopez-g          #+#    #+#             */
-/*   Updated: 2020/07/07 17:14:48 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/24 05:13:22 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	*ft_calloc(size_t count, size_t size)
 	size_t	aux;
 
 	aux = 0;
-	if (!(s = malloc(count * size)))
+	s = malloc(count * size);
+	if (!s)
 		return (0);
 	while (aux < (count * size))
 	{

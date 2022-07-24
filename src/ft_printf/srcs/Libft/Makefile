@@ -6,7 +6,7 @@
 #    By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/07 17:06:37 by aloez-g           #+#    #+#              #
-#    Updated: 2022/07/24 02:48:56 by alopez-g         ###   ########.fr        #
+#    Updated: 2022/07/24 03:09:57 by alopez-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,6 @@ SRC			=	${SRC_DIR}/ft_memset.c				${SRC_DIR}/ft_bzero.c \
 
 BUILD_DIR	=	$(SRC_DIR)/build
 OBJS		= 	$(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC))
-#OBJS		= 	$(patsubst %.c, %.o, $(SRC))
 
 CC			=	gcc
 FLAGS		=	-Wall -Werror -Wextra
@@ -53,7 +52,7 @@ NAME		= 	libft.a
 all:			${NAME}
 test:
 	@echo $(OBJS)
-$(NAME):		$(patsubst %.c, %.o, srcs/ft_memset.c)
+$(NAME):		$(OBJS)
 				@ar -rc ${NAME} ${OBJS}
 				@ar -s ${NAME}
 clean:

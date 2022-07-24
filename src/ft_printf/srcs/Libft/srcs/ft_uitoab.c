@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 16:17:32 by alopez-g          #+#    #+#             */
-/*   Updated: 2020/07/31 15:46:30 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/24 05:24:45 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int	base_digits(unsigned int n, int bs_cnt, char *base)
 
 static int	check_repeated(char *tab, int cnt)
 {
-	int aux;
+	int	aux;
 
 	while (cnt > 0)
 	{
@@ -77,7 +77,8 @@ static char	*to_base(unsigned int n, int bs_cnt, char *base)
 	aux = 0;
 	num = n;
 	len = base_digits(num, bs_cnt, base) + 1;
-	if (!(str = (char *)malloc(sizeof(char) * len + 1)))
+	str = (char *)malloc(sizeof(char) * len + 1);
+	if (!str)
 		return (0);
 	*(str + len) = '\0';
 	while (aux < len)
@@ -101,7 +102,7 @@ static char	*to_base(unsigned int n, int bs_cnt, char *base)
 ** returns:         strings with decimal number in base base
 */
 
-char		*ft_uitoab(unsigned int n, char *base)
+char	*ft_uitoab(unsigned int n, char *base)
 {
 	int		base_cnt;
 	int		valid;
