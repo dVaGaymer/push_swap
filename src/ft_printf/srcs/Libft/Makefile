@@ -6,7 +6,7 @@
 #    By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/07 17:06:37 by aloez-g           #+#    #+#              #
-#    Updated: 2022/07/24 01:01:03 by alopez-g         ###   ########.fr        #
+#    Updated: 2022/07/24 02:48:56 by alopez-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,21 +38,24 @@ SRC			=	${SRC_DIR}/ft_memset.c				${SRC_DIR}/ft_bzero.c \
 				${SRC_DIR}/ft_lstmap_bonus.c
 
 BUILD_DIR	=	$(SRC_DIR)/build
-OBJS		= 	$(patsubst %.c, %.o, $(SRC))
+OBJS		= 	$(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC))
+#OBJS		= 	$(patsubst %.c, %.o, $(SRC))
 
 CC			=	gcc
 FLAGS		=	-Wall -Werror -Wextra
 I_FLAG		=	-I $(FTPF_INC) -I $(LIBFT_INC)
 
-%.o : %.c
+$(BUILD_DIR)/%.o	: $(SRC_DIR)/%.c
 			@$(CC) $(FLAGS) $(I_FLAG) -c $< -o $@
 
 NAME		= 	libft.a
 
-$(NAME):		$(OBJS)
+all:			${NAME}
+test:
+	@echo $(OBJS)
+$(NAME):		$(patsubst %.c, %.o, srcs/ft_memset.c)
 				@ar -rc ${NAME} ${OBJS}
 				@ar -s ${NAME}
-all:			${NAME}
 clean:
 				@rm -f ${OBJS}
 fclean:			clean
