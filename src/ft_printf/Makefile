@@ -6,7 +6,7 @@
 #    By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/07 17:46:30 by alopez-g          #+#    #+#              #
-#    Updated: 2022/07/24 03:09:09 by alopez-g         ###   ########.fr        #
+#    Updated: 2022/07/25 04:35:25 by alopez-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ LIBFT_A		=	${LIBFT_DIR}/libft.a
 NAME		=	libftprintf.a
 
 $(BUILD_DIR)/%.o : $(FTPF_DIR)/%.c
+				mkdir -p $(BUILD_DIR)
 				clang -Wall -Werror -Wextra -I $(FTPF_INC) -I $(LIBFT_INC) -c $< -o $@
 
 all:			${NAME}

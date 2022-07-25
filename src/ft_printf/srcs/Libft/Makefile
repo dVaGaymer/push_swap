@@ -6,7 +6,7 @@
 #    By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/07 17:06:37 by aloez-g           #+#    #+#              #
-#    Updated: 2022/07/24 03:09:57 by alopez-g         ###   ########.fr        #
+#    Updated: 2022/07/25 04:35:57 by alopez-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ FLAGS		=	-Wall -Werror -Wextra
 I_FLAG		=	-I $(FTPF_INC) -I $(LIBFT_INC)
 
 $(BUILD_DIR)/%.o	: $(SRC_DIR)/%.c
+			@mkdir -p $(BUILD_DIR)
 			@$(CC) $(FLAGS) $(I_FLAG) -c $< -o $@
 
 NAME		= 	libft.a
