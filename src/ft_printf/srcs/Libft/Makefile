@@ -6,7 +6,7 @@
 #    By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/07 17:06:37 by aloez-g           #+#    #+#              #
-#    Updated: 2022/07/25 04:35:57 by alopez-g         ###   ########.fr        #
+#    Updated: 2022/07/25 04:42:48 by alopez-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,9 +51,7 @@ $(BUILD_DIR)/%.o	: $(SRC_DIR)/%.c
 NAME		= 	libft.a
 
 all:			${NAME}
-test:
-	@echo $(OBJS)
-$(NAME):		$(OBJS)
+$(NAME):		build_dir $(OBJS)
 				@ar -rc ${NAME} ${OBJS}
 				@ar -s ${NAME}
 clean:
@@ -61,4 +59,6 @@ clean:
 fclean:			clean
 				@rm -f ${NAME}
 re:				fclean all
+build_dir:
+				@mkdir -p $(BUILD_DIR)
 .PHONY:			all clean fclean re

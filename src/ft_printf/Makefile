@@ -6,7 +6,7 @@
 #    By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/07 17:46:30 by alopez-g          #+#    #+#              #
-#    Updated: 2022/07/25 04:35:25 by alopez-g         ###   ########.fr        #
+#    Updated: 2022/07/25 04:43:08 by alopez-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,11 +26,10 @@ LIBFT_A		=	${LIBFT_DIR}/libft.a
 NAME		=	libftprintf.a
 
 $(BUILD_DIR)/%.o : $(FTPF_DIR)/%.c
-				mkdir -p $(BUILD_DIR)
 				clang -Wall -Werror -Wextra -I $(FTPF_INC) -I $(LIBFT_INC) -c $< -o $@
 
 all:			${NAME}
-${NAME}:		${OBJS}
+${NAME}:		build_dir ${OBJS}
 				make -C ${LIBFT_DIR}
 				cp ${LIBFT_A} ${NAME}
 				ar -rc ${NAME} ${OBJS}
@@ -43,4 +42,6 @@ fclean:			clean
 				rm -f ${LIBFT_A}
 				rm -f ${NAME}
 re:				fclean all
+build_dir:
+				@mkdir -p $(BUILD_DIR)
 .PHONY:			all clean fclean re bonus

@@ -6,7 +6,7 @@
 #    By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/05 22:01:15 by alopez-g          #+#    #+#              #
-#    Updated: 2022/07/25 04:24:48 by alopez-g         ###   ########.fr        #
+#    Updated: 2022/07/25 04:44:06 by alopez-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,33 +75,33 @@ FLAGS 			= -Wall -Wextra -Werror
 I_FLAG 			= -I $(I_DIR)/ -I $(I_FTPF)/ -I $(I_LIBFT)/
 
 $(BUILD_DIR)/%.o : $(SRC_DIR)/%.c
-	@mkdir -p $(BUILD_DIR)
-	@$(CC) $(FLAGS) $(I_FLAG)  -c $< -o $@
+				@$(CC) $(FLAGS) $(I_FLAG)  -c $< -o $@
 $(BUILD_DIR)/%.o : $(SRC_INSTR)/%.c
-	@mkdir -p $(BUILD_DIR)
-	@$(CC) $(FLAGS) $(I_FLAG)  -c $< -o $@
+				@$(CC) $(FLAGS) $(I_FLAG)  -c $< -o $@
 $(BUILD_DIR)/%.o : $(SRC_COLOR)/%.c
-	@mkdir -p $(BUILD_DIR)
-	@$(CC) $(FLAGS) $(I_FLAG)  -c $< -o $@
+				@$(CC) $(FLAGS) $(I_FLAG)  -c $< -o $@
 #-------------------------------------------------------------------------------
 
 all: $(NAME)
-$(NAME): $(OBJ) $(FTPF_SRC) $(M_FTPF) $(LIBFT_SRC) $(M_LIBFT) $(I)
-	@echo "${RED}Compiling LIBFTPRINTF${NC}\c"
-	@make -s -C $(FTPF_DIR)
-	@echo " ---> ${CYAN}Success${NC}"
-	@$(CC) $(FLAGS) $(OBJ) -L$(FTPF_DIR) -l$(FTPF_LIB) -o push_swap
-	@echo "${GREEN}${NAME} READY!${NC}"
+$(NAME): build_dir $(OBJ) $(FTPF_SRC) $(M_FTPF) $(LIBFT_SRC) $(M_LIBFT) $(I)
+				@echo "${RED}Compiling LIBFTPRINTF${NC}\c"
+				@make -s -C $(FTPF_DIR)
+				@echo " ---> ${CYAN}Success${NC}"
+				@$(CC) $(FLAGS) $(OBJ) -L$(FTPF_DIR) -l$(FTPF_LIB) -o push_swap
+				@echo "${GREEN}${NAME} READY!${NC}"
 clean:
-	@make -s -C $(FTPF_DIR) clean
-	@rm -rf $(BUILD_DIR)
-	@echo "${YELLOW}OBJS Removed!${NC}"
+				@make -s -C $(FTPF_DIR) clean
+				@rm -rf $(BUILD_DIR)
+				@echo "${YELLOW}OBJS Removed!${NC}"
 fclean: clean
-	@make -s -C $(FTPF_DIR) fclean
-	@rm -rf $(NAME)
-	@echo "${YELLOW}$(NAME) Removed!${NC}"
+				@make -s -C $(FTPF_DIR) fclean
+				@rm -rf $(NAME)
+				@echo "${YELLOW}$(NAME) Removed!${NC}"
+build_dir:
+				@mkdir -p $(BUILD_DIR)
 re: fclean $(NAME)
+.PHONY: clean fclean re
+
 pls: FLAGS = -g
 pls: re
-.PHONY: clean fclean re
 
