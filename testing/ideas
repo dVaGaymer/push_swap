@@ -3,4 +3,4 @@ order 5 (order 3 fuerza bruta) ~= 10
 order 5 (fuerza bruta) ~= 13
 order 5 <= 8
 
-RADIX SHORT
+RADIX SORT
