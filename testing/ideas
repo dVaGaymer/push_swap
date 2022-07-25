@@ -2,3 +2,5 @@ para ordenar 10 es tan simple como pasar 5 a un lado y ordenar los 5 por separad
 order 5 (order 3 fuerza bruta) ~= 10
 order 5 (fuerza bruta) ~= 13
 order 5 <= 8
+
+RADIX SHORT

@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 22:13:07 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/25 01:43:32 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/25 06:22:15 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,9 +201,10 @@ void	move(t_stack *st, t_list *from, t_list *to, char bit, char cond)
 	char	bits;
 	
 	bits = 0;
-	n = 0;
+	n = st->na;
 	num = ((t_num *)(from->content))->order;
-	while (n++ < st->na)
+	ft_printf("|%d|", st->na);
+	while (n--)
 	{
 		num = ((t_num *)(from->content))->order;
 		if (check_bit(num, bit) == cond)
@@ -215,19 +216,23 @@ void	move(t_stack *st, t_list *from, t_list *to, char bit, char cond)
 
 void	test(t_stack *st)
 {
-	int	n;
+	int		n;
+	char	bit;
 
-	n = 3;
-	while (n-- > 0)
+	n = 0;
+	bit = 1;
+	while (n++ < 2)
 	{
-		move(st, st->a, st->b, n, 0);
+		move(st, st->a, st->b, bit--, 0);
+		print_status(*st);
 	}
 }
 
 int	push_swap(t_stack *st)
 {
 	print_status(*st);
-	move(st, st->a, st->b, 0, 1);
+	//move(st, st->a, st->b, 0, 0);
+	test(st);
 	print_status(*st);
 	//brute_force(st, &st->a, &st->b);
 	//order5only(st, st->a, st->b);

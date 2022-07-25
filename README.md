@@ -1,3 +1,10 @@
+Radix Short
+--------------------
+
+Optimizacion:
+	checkear movimientos que redundantes o que equivalen a otro conjunto
+	de menos movimientos
+
 2	: 2 Movimientos
 
 3	: Entre 2 y 3 movimientos
