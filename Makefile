@@ -6,7 +6,7 @@
 #    By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/05 22:01:15 by alopez-g          #+#    #+#              #
-#    Updated: 2022/07/25 00:44:13 by alopez-g         ###   ########.fr        #
+#    Updated: 2022/07/25 04:24:48 by alopez-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,10 +75,13 @@ FLAGS 			= -Wall -Wextra -Werror
 I_FLAG 			= -I $(I_DIR)/ -I $(I_FTPF)/ -I $(I_LIBFT)/
 
 $(BUILD_DIR)/%.o : $(SRC_DIR)/%.c
+	@mkdir -p $(BUILD_DIR)
 	@$(CC) $(FLAGS) $(I_FLAG)  -c $< -o $@
 $(BUILD_DIR)/%.o : $(SRC_INSTR)/%.c
+	@mkdir -p $(BUILD_DIR)
 	@$(CC) $(FLAGS) $(I_FLAG)  -c $< -o $@
 $(BUILD_DIR)/%.o : $(SRC_COLOR)/%.c
+	@mkdir -p $(BUILD_DIR)
 	@$(CC) $(FLAGS) $(I_FLAG)  -c $< -o $@
 #-------------------------------------------------------------------------------
 
@@ -91,7 +94,7 @@ $(NAME): $(OBJ) $(FTPF_SRC) $(M_FTPF) $(LIBFT_SRC) $(M_LIBFT) $(I)
 	@echo "${GREEN}${NAME} READY!${NC}"
 clean:
 	@make -s -C $(FTPF_DIR) clean
-	@rm -rf $(OBJ)
+	@rm -rf $(BUILD_DIR)
 	@echo "${YELLOW}OBJS Removed!${NC}"
 fclean: clean
 	@make -s -C $(FTPF_DIR) fclean

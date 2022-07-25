@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 22:13:07 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/25 00:37:44 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/25 01:43:32 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,23 +189,51 @@ int	ordered(t_list *l)
 	return (0);
 }
 
-char	bit(int num, char bit)
+char	check_bit(int num, char bit)
 {
-	char f;
+	return (num & (0x1 << bit));
+}
 
-	f = num & (0x1 << bit);
-	return (f);
+void	move(t_stack *st, t_list *from, t_list *to, char bit, char cond)
+{
+	int		n;
+	int		num;
+	char	bits;
+	
+	bits = 0;
+	n = 0;
+	num = ((t_num *)(from->content))->order;
+	while (n++ < st->na)
+	{
+		num = ((t_num *)(from->content))->order;
+		if (check_bit(num, bit) == cond)
+			pab(st, &to, &from);
+		else
+			rab(st, &from, &to);
+	}
+}
+
+void	test(t_stack *st)
+{
+	int	n;
+
+	n = 3;
+	while (n-- > 0)
+	{
+		move(st, st->a, st->b, n, 0);
+	}
 }
 
 int	push_swap(t_stack *st)
 {
-	//print_status(*st);
-	brute_force(st, &st->a, &st->b);
-	//print_status(*st);
+	print_status(*st);
+	move(st, st->a, st->b, 0, 1);
+	print_status(*st);
+	//brute_force(st, &st->a, &st->b);
 	//order5only(st, st->a, st->b);
 	//order10(st);
 	//print_status(*st);
-	print_instr(st);
+	//print_instr(st);
 	//brute_force(st);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 21:46:58 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/16 07:13:00 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/25 01:27:33 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	_rr(t_list **l)
 
 	first = (*l);
 	second = (*l)->next;
+	if (!first || !second)
+		return ;
 	last = ft_lstlast(*l);
 	prelast = ft_lstprelast(*l);
 	prelast->next = NULL;
