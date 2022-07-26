@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 01:37:51 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/16 07:12:41 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/26 23:54:44 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ void	rrb(t_stack *stacks);
 void	rrr(t_stack *stacks);
 void	exec_instr(t_stack *st);
 void	print_instr(t_stack *st);
+void	optimize(t_stack *st);
 
 #endif

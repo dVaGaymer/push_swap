@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 22:13:53 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/26 23:45:39 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/26 23:54:58 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int	main(int argc, char **argv)
 		exit(1);
 	}
 	push_swap(&st);
+	optimize(&st);
 	print_instr(&st);
 	ft_lstclear(&st.a, free);
 	ft_lstclear(&st.b, free);

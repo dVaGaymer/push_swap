@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 22:49:05 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/26 22:53:11 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/26 23:55:06 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,3 +21,7 @@
  *
  * Function que chequee si los numeros estan ordenados de antemano
  * */
+void	optimize(t_stack *st)
+{
+	(void)st;
+}
