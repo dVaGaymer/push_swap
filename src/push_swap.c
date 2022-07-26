@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 22:13:07 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/26 23:37:30 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/26 23:51:59 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,25 @@ void	move(t_stack *st, t_list *from, t_list *to, char bit)
 		pab(st, &to, &from);
 }
 
+int	ordered(t_list *l)
+{
+	t_list	*l1;
+	t_list	*l2;
+	t_list	*last;
+
+	last = ft_lstlast(l);
+	l1 = l;
+	l2 = l1->next;
+	while (((t_num *)(l1->content))->num < ((t_num *)(l2->content))->num && l2)
+	{
+		l1 = l2;
+		if (!(l1->next))
+			return (1);
+		l2 = l1->next;
+	}
+	return (0);
+}
+
 /*
  * Llevar los 0 del bit 0 a B
  * Llevar los 1 del bit 1 a A
@@ -117,6 +136,8 @@ void	push_swap(t_stack *st)
 	int		n;
 	char	bit;
 
+	if (ordered(st->a))
+		return ;
 	if (st->total <= 5)
 		return (order5only(st));
 	n = 0;

@@ -20,4 +20,5 @@ TODO
 -----
 
 - [ ] Optimize
-- [ ] Check if list is ordered first
+- [x] Check if list is ordered first
+- [ ] Check if list is ordered but shifted...?
