@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 22:27:04 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/26 16:11:29 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/26 22:55:17 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,30 @@
 #include "libft.h"
 #include "color.h"
 
+int	is_repeated(t_stack *st, int num)
+{
+	t_list *l;
+
+	l = st->a;
+	while (l)
+	{
+		if (num == (int)((t_num *)(l)->content)->num)
+			return (1);
+		l = l->next;
+	}
+	return (0);
+}
+
+/*
+ * 1 - NO ARGS
+ * 2 - ARG NOT A NUMBER
+ * 3 - REPEATED NUMBER
+ * */
 int	parse_args(int argc, char **argv, t_stack *st)
 {
-	t_num		*n;
-	t_list		*l;
+	int		num;
+	t_num	*n;
+	t_list	*l;
 
 	if (!argc)
 		return (1);
@@ -28,8 +48,11 @@ int	parse_args(int argc, char **argv, t_stack *st)
 	st->nb = 0;
 	while (argc-- >= 0)
 	{
+		num = ft_atoi(*(argv++));
+		if (is_repeated(st, num))
+			return (3);
 		n = malloc(sizeof(t_num));
-		n->num = ft_atoi(*(argv++));
+		n->num = num;
 		if ((n->num == 0 && **(argv - 1) != 48)
 			|| n->num > 2147483647 || n->num < -2147483648)
 			return (2);

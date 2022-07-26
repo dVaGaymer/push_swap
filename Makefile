@@ -6,7 +6,7 @@
 #    By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/05 22:01:15 by alopez-g          #+#    #+#              #
-#    Updated: 2022/07/26 18:52:07 by alopez-g         ###   ########.fr        #
+#    Updated: 2022/07/26 23:05:39 by alopez-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,7 @@ SRC_COLOR 		= $(SRC_DIR)/colors
 SRC_INSTR 		= $(SRC_DIR)/instr
 SRC_COLOR_C 	= color.c
 SRC_INSTR_C 	= exec.c s.c p.c r.c rr.c 
-SRC_PS_C 		= push_swap.c main.c utils.c sort_utils.c bitwise.c
+SRC_PS_C 		= push_swap.c main.c utils.c sort_utils.c bitwise.c optim.c
 SRC 			= $(patsubst %.c, $(SRC_DIR)/%.c, $(SRC_PS_C)) \
 					$(patsubst %.c, $(SRC_COLOR)/%.c, $(SRC_COLOR_C)) \
 					$(patsubst %.c, $(SRC_INSTR)/%.c, $(SRC_INSTR_C)) 
@@ -83,7 +83,7 @@ $(BUILD_DIR)/%.o : $(SRC_COLOR)/%.c
 #-------------------------------------------------------------------------------
 
 all: $(NAME)
-$(NAME): build_dir $(OBJ) $(FTPF_SRC) $(M_FTPF) $(LIBFT_SRC) $(M_LIBFT) $(I)
+$(NAME): $(OBJ) $(FTPF_SRC) $(M_FTPF) $(LIBFT_SRC) $(M_LIBFT) $(I)
 				@echo "${RED}Compiling LIBFTPRINTF${NC}\c"
 				@make -s -C $(FTPF_DIR)
 				@echo " ---> ${CYAN}Success${NC}"
@@ -91,14 +91,12 @@ $(NAME): build_dir $(OBJ) $(FTPF_SRC) $(M_FTPF) $(LIBFT_SRC) $(M_LIBFT) $(I)
 				@echo "${GREEN}${NAME} READY!${NC}"
 clean:
 				@make -s -C $(FTPF_DIR) clean
-				@rm -rf $(BUILD_DIR)
+				@rm -rf $(BUILD_DIR)/*
 				@echo "${YELLOW}OBJS Removed!${NC}"
 fclean: clean
 				@make -s -C $(FTPF_DIR) fclean
 				@rm -rf $(NAME)
 				@echo "${YELLOW}$(NAME) Removed!${NC}"
-build_dir:
-				@mkdir -p $(BUILD_DIR)
 re: fclean $(NAME)
 .PHONY: clean fclean re
 

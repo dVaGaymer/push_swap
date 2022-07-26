@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 22:13:53 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/26 19:15:17 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/26 22:59:35 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,6 @@
 #include "instructions.h"
 #include <stdio.h>
 #include "color.h"
-
-void	check_leaks()
-{
-	system("leaks push_swap");
-}
 
 int	main(int argc, char **argv)
 {
@@ -46,6 +41,5 @@ int	main(int argc, char **argv)
 	ft_lstiter(st.a, free);
 	ft_lstiter(st.b, free);
 	//ft_lstiter(st.i, free);
-	//atexit(check_leaks);
 	return (0);
 }
