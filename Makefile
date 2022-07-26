@@ -6,7 +6,7 @@
 #    By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/05 22:01:15 by alopez-g          #+#    #+#              #
-#    Updated: 2022/07/25 04:44:06 by alopez-g         ###   ########.fr        #
+#    Updated: 2022/07/26 16:44:32 by alopez-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -102,6 +102,6 @@ build_dir:
 re: fclean $(NAME)
 .PHONY: clean fclean re
 
-pls: FLAGS = -g
-pls: re
+debug: FLAGS = -g -D DEBUG
+debug: re
 
