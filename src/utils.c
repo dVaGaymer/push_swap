@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 22:27:04 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/26 22:55:17 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/26 23:36:53 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 int	is_repeated(t_stack *st, int num)
 {
-	t_list *l;
+	t_list	*l;
 
 	l = st->a;
 	while (l)

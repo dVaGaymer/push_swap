@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 22:13:07 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/26 19:31:23 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/26 23:37:30 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	order3only(t_stack *st)
 	n1 = (int)((t_num *)(st->a->content))->order;
 	n2 = (int)((t_num *)(st->a->next)->content)->order;
 	if (n1 > n2 && !(st->a->next->next))
-		return	(sa(st));
+		return (sa(st));
 	if (n1 < n2 && !(st->a->next->next))
 		return ;
 	n3 = (int)((t_num *)(st->a->next->next)->content)->order;
