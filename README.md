@@ -14,3 +14,10 @@ Optimizacion:
 100	: Entre 500 y 700 movimientos
 
 500	: Entre 5100 y 5500 movimientos
+
+
+TODO
+-----
+
+- [ ] Optimize
+- [ ] Check if list is ordered first
