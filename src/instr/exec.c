@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 01:09:48 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/24 05:28:38 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/26 19:15:22 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,21 +67,4 @@ void	print_instr(t_stack *st)
 		ft_putchar_fd('\n', 1);
 		ins = ins->next;
 	}
-	if (ins)
-		((t_instr)ins->content)(st);
 }
-/*
-void	exec_instr(t_stack *st)
-{
-	t_list	*ins;
-
-	ins = st->i;
-	while (ins)
-	{
-		((t_instr)ins->content)(st);
-		ins = ins->next;
-	}
-	if (ins)
-		((t_instr)ins->content)(st);
-}
-*/

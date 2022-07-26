@@ -6,7 +6,7 @@
 #    By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/05 22:01:15 by alopez-g          #+#    #+#              #
-#    Updated: 2022/07/26 16:44:32 by alopez-g         ###   ########.fr        #
+#    Updated: 2022/07/26 18:52:07 by alopez-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ I_LIBFT_H	 	= $(I_LIBT)/libft.h
 #---------- PUSH SWAP ----------------------------------------------------------
 #---------- INCLUDES ----------
 I_DIR 			= $(DIR)/includes
-I_H 			= push_swap.h color.h
+I_H 			= push_swap.h color.h bitwise.h
 I 				= $(patsubst %.h, $(I_DIR)/%.h, $(I_H))
 
 #---------- SRC ----------
@@ -54,7 +54,7 @@ SRC_COLOR 		= $(SRC_DIR)/colors
 SRC_INSTR 		= $(SRC_DIR)/instr
 SRC_COLOR_C 	= color.c
 SRC_INSTR_C 	= exec.c s.c p.c r.c rr.c 
-SRC_PS_C 		= push_swap.c main.c utils.c 
+SRC_PS_C 		= push_swap.c main.c utils.c sort_utils.c bitwise.c
 SRC 			= $(patsubst %.c, $(SRC_DIR)/%.c, $(SRC_PS_C)) \
 					$(patsubst %.c, $(SRC_COLOR)/%.c, $(SRC_COLOR_C)) \
 					$(patsubst %.c, $(SRC_INSTR)/%.c, $(SRC_INSTR_C)) 

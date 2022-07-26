@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 22:14:17 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/12 07:05:12 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/26 18:51:52 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,10 @@ typedef struct s_stack
 	t_list	*a;
 	t_list	*b;
 }				t_stack;
-int		push_swap(t_stack *st);
+void	push_swap(t_stack *st);
 int		parse_args(int argc, char **argv, t_stack *st);
 void	print_status(t_stack st);
+void	uporder(t_stack *st, t_list *sel, t_list *order, int other);
+int		smaller_order(t_list *l);
 
 #endif
