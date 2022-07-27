@@ -1,16 +1,20 @@
+TEST_PATH="/Users/alopez-g/Documents/42/rank02/push_swap/testing/logs"
 #Rango - numero de valores
 A=-10000
 B=10000
 ARG=$(seq $A $B | sort -R | tail -n $3 | tr '\n' ' ')
-./push_swap $ARG
-echo $ARG
-./push_swap $ARG | wc -l
 ERR=`./push_swap $ARG | ./testing/checker_Mac $ARG`
-if [[ $ERR == "OK" ]]
+if [[ $4 == "1" ]]
 then
-	echo "\033[1;32m"
-else
-	echo "\033[1;31m"
+	./push_swap $ARG
+	./push_swap $ARG | wc -l
+	echo $ARG
+	if [[ $ERR == "OK" ]]
+	then
+		echo "\033[1;32m$ERR\033[0m"
+	else
+		echo "\033[1;31mERROR ERRROR ERROR ERROR ERROR ERROR ERROR$ERR\033[0m"
+		echo $ARG >> $TEST_PATH/error_log
+	fi
 fi
-echo "$ERR\033[0m"
-echo  "Tested $3 numbers in range [$A, $B]"
+echo  "Tested $3 numbers in range [$A, $B] \033[1;32m$ERR\033[0m" >> $TEST_PATH/log_$3

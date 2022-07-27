@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 22:49:05 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/28 00:00:39 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/28 00:22:49 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ void	optimize(t_stack *st)
 				st->i = aux;
 			flag = 1;
 		}
-		ins = ins->next;
+		if (ins)
+			ins = ins->next;
 		if (flag)
 			ins = st->i;
 	}

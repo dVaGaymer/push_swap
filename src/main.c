@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 22:13:53 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/28 00:09:25 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/28 00:22:51 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include "instructions.h"
 #include <stdio.h>
 #include "color.h"
+#define MIN_OPT 5
 
 void	exit_on_error(t_stack *st, int err)
 {
@@ -38,7 +39,7 @@ int	main(int argc, char **argv)
 	st_init(&st);
 	exit_on_error(&st, parse_args(argc - 1, argv + 1, &st));
 	push_swap(&st);
-	if (ft_lstsize(st.i) > 0)
+	if (ft_lstsize(st.i) > MIN_OPT)
 		optimize(&st);
 	print_instr(&st);
 	st_clear(&st);
@@ -62,7 +63,7 @@ int	main(int argc, char **argv)
 	st_init(&st);
 	exit_on_error(&st, parse_args(argc - 1, argv + 1, &st));
 	push_swap(&st);
-	if (ft_lstsize(st.i) > 0)
+	if (ft_lstsize(st.i) > MIN_OPT)
 		optimize(&st);
 	print_instr(&st);
 	st_clear(&st);
