@@ -6,7 +6,7 @@
 #    By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/05 22:01:15 by alopez-g          #+#    #+#              #
-#    Updated: 2022/07/26 23:54:52 by alopez-g         ###   ########.fr        #
+#    Updated: 2022/07/27 04:28:28 by alopez-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,6 +100,7 @@ fclean: clean
 re: fclean $(NAME)
 .PHONY: clean fclean re
 
+sanitize: FLAGS += -fsanitize=address
+sanitize: re
 debug: FLAGS = -g -D DEBUG
 debug: re
-
