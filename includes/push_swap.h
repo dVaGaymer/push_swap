@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 22:14:17 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/26 18:51:52 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/28 00:07:56 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,7 @@ int		parse_args(int argc, char **argv, t_stack *st);
 void	print_status(t_stack st);
 void	uporder(t_stack *st, t_list *sel, t_list *order, int other);
 int		smaller_order(t_list *l);
+void	st_clear(t_stack *st);
+void	st_init(t_stack *st);
 
 #endif

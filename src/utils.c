@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 22:27:04 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/26 23:36:53 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/28 00:07:55 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,20 @@ void	print_status(t_stack st)
 		write(1, "\n", 1);
 	}
 	ft_printf("- -\na b\n----------------\n");
+}
+
+void	st_clear(t_stack *st)
+{
+	ft_lstclear(&(st->a), free);
+	ft_lstclear(&(st->b), free);
+	ft_lstclear(&(st->i), 0);
+}
+
+void	st_init(t_stack *st)
+{
+	st->a = 0;
+	st->b = 0;
+	st->i = 0;
+	*(st->crange) = 0;
+	*(st->crange + 1) = 255;
 }

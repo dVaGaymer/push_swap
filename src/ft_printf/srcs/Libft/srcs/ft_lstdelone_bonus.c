@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:20:07 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/27 22:06:40 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/28 00:03:43 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 
 void	ft_lstdelone(t_list **lst, void (*del)(void*))
 {
-	t_list	*prev;
+	t_list	*nx;
+	t_list	*pv;
 
-	(*lst)->prev->next = (*lst)->next;
-	prev = (*lst)->prev;
+	nx = (*lst)->next;
+	pv = (*lst)->prev;
+	pv->next = nx;
+	nx->prev = pv;
 	if (del)
 		(del)((*lst)->content);
 	free(*lst);
-	*lst = prev;
+	*lst = nx;
 }
