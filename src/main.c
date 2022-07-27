@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main.c                                       |*---------------------*|   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 22:13:53 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/27 01:46:13 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/27 03:05:18 by alopez-g     +-----------------------+   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,9 @@ int	main(int argc, char **argv)
 	t_stack	st;
 	int		err;
 
-#ifdef DEBUG
-	atexit(check_leaks);
-#endif
 	st.a = 0;
 	st.b = 0;
+	st.i = 0;
 	*(st.crange) = 0;
 	*(st.crange + 1) = 255;
 	err = parse_args(argc - 1, argv + 1, &st);
@@ -53,6 +51,6 @@ int	main(int argc, char **argv)
 	print_instr(&st);
 	ft_lstclear(&st.a, free);
 	ft_lstclear(&st.b, free);
-	ft_lstfree(&st.i);
+	ft_lstclear(&st.i, 0);
 	return (0);
 }
