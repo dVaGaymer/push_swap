@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:03:34 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/27 02:22:56 by alopez-g     +-----------------------+   */
+/*   Updated: 2022/07/27 20:58:05 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	else
 	{
 		l = ft_lstlast(*lst);
+		new->prev = l;
 		l->next = new;
 	}
 }

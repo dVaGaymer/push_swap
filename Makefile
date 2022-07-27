@@ -6,7 +6,7 @@
 #    By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/05 22:01:15 by alopez-g          #+#    #+#              #
-#    Updated: 2022/07/27 04:28:28 by alopez-g         ###   ########.fr        #
+#    Updated: 2022/07/27 22:06:53 by alopez-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,7 @@ SRC_COLOR 		= $(SRC_DIR)/colors
 SRC_INSTR 		= $(SRC_DIR)/instr
 SRC_COLOR_C 	= color.c
 SRC_INSTR_C 	= exec.c s.c p.c r.c rr.c 
-SRC_PS_C 		= push_swap.c main.c utils.c sort_utils.c bitwise.c optim.c
+SRC_PS_C 		= push_swap.c main.c utils.c sort_utils.c bitwise.c #optim.c
 SRC 			= $(patsubst %.c, $(SRC_DIR)/%.c, $(SRC_PS_C)) \
 					$(patsubst %.c, $(SRC_COLOR)/%.c, $(SRC_COLOR_C)) \
 					$(patsubst %.c, $(SRC_INSTR)/%.c, $(SRC_INSTR_C)) 

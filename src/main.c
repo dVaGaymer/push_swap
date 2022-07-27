@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 22:13:53 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/27 03:05:18 by alopez-g     +-----------------------+   */
+/*   Updated: 2022/07/27 22:06:09 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,38 +19,39 @@
 #include <stdio.h>
 #include "color.h"
 
-#ifdef DEBUG
-
-void	check_leaks(void)
+void	exit_on_error(int err)
 {
-	system("leaks push_swap");
+	if (!err)
+		return ;
+	else if (err != 1)
+		ft_putstr_fd("Error\n", 2);
+	exit(1);
 }
 
-#endif
+void	st_init(t_stack *st)
+{
+	st->a = 0;
+	st->b = 0;
+	st->i = 0;
+	*(st->crange) = 0;
+	*(st->crange + 1) = 255;
+}
+
+void	st_clear(t_stack *st)
+{
+	ft_lstclear(&(st->a), free);
+	ft_lstclear(&(st->b), free);
+	ft_lstclear(&(st->i), 0);
+}
 
 int	main(int argc, char **argv)
 {
 	t_stack	st;
-	int		err;
 
-	st.a = 0;
-	st.b = 0;
-	st.i = 0;
-	*(st.crange) = 0;
-	*(st.crange + 1) = 255;
-	err = parse_args(argc - 1, argv + 1, &st);
-	if (err == 1)
-		exit(1);
-	else if (err)
-	{
-		ft_putstr_fd("Error\n", 2);
-		exit(1);
-	}
+	st_init(&st);
+	exit_on_error(parse_args(argc - 1, argv + 1, &st));
 	push_swap(&st);
-	//optimize(&st);
 	print_instr(&st);
-	ft_lstclear(&st.a, free);
-	ft_lstclear(&st.b, free);
-	ft_lstclear(&st.i, 0);
+	st_clear(&st);
 	return (0);
 }
