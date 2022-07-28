@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 22:13:53 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/28 03:56:08 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/07/28 16:51:19 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,11 @@ int	main(int argc, char **argv)
 	atexit(check_leaks);
 	st_init(&st);
 	exit_on_error(&st, parse_args(argc - 1, argv + 1, &st));
+	print_status(st);
 	push_swap(&st);
 	if (ft_lstsize(st.i) > MIN_OPT)
 		optimize(&st);
+	print_status(st);
 	print_instr(&st);
 	st_clear(&st);
 	return (0);
