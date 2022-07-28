@@ -1,4 +1,5 @@
 TEST_PATH="/Users/alopez-g/Documents/42/rank02/push_swap/testing/logs"
+TEST_PATH="/Users/al7aro/Development/42/rank02/push_swap/testing/logs"
 #Rango - numero de valores
 A=-10000
 B=10000
