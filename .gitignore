@@ -3,4 +3,4 @@
 *.o
 push_swap
 *.swp
-log_*
+*_log

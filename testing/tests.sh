@@ -18,4 +18,4 @@ then
 		echo $ARG >> $TEST_PATH/error_log
 	fi
 fi
-echo  "Tested $3 numbers in range [$A, $B] \033[1;32m$ERR\033[0m" >> $TEST_PATH/log_$3
+echo  "Tested $3 numbers in range [$A, $B] \033[1;32m$ERR\033[0m" >> $TEST_PATH/$3_log
