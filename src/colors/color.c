@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 18:27:00 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/27 22:54:00 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/08/03 00:31:16 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ void	mapper(t_stack st, int n)
 
 void	lstorder(t_stack *stack)
 {
-	int		n;
-	int		max;
+	int	n;
+	long	max;
 	t_list	*l;
 
 	l = stack->a;
 	n = stack->na - 1;
-	max = 2147483647;
+	max = (long)2147483647 + 1;
 	while (n >= 0)
 	{
 		l = ft_lstmax(stack->a, max);
@@ -45,29 +45,29 @@ void	lstorder(t_stack *stack)
 	}
 }
 
-t_list	*ft_lstmax(t_list *lst, int limit)
+t_list	*ft_lstmax(t_list *lst, long limit)
 {
 	t_list	*l;
-	int		max;
-	int		aux;
+	long	min;
+	int	aux;
 
-	max = -2147483648;
+	min = (long)-2147483648 - 1;
 	if (!lst)
 		return (0);
 	while (lst->next)
 	{
-		aux = (int)((t_num *)(lst->content))->num;
-		if (aux > max && aux < limit)
+		aux =  ((t_num *)(lst->content))->num;
+		if (aux > min && aux < limit)
 		{
-			max = aux;
+			min = aux;
 			l = lst;
 		}
 		lst = lst->next;
 	}
-	aux = (int)((t_num *)(lst->content))->num;
-	if (aux > max && aux < limit)
+	aux = ((t_num *)(lst->content))->num;
+	if (aux > min && aux < limit)
 	{
-		max = aux;
+		min = aux;
 		l = lst;
 	}
 	return (l);
