@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 22:27:04 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/08/03 14:48:39 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/08/03 14:51:56 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,11 @@ int	parse_args(int argc, char **argv, t_stack *st)
 		num = ft_atoi(*(argv++));
 		if (is_repeated(st, num))
 			return (3);
+		if ((num == 0 && **(argv - 1) != 48)
+			|| num > 2147483647 || num < -2147483648)
+			return (2);
 		n = malloc(sizeof(t_num));
 		n->num = num;
-		if ((n->num == 0 && **(argv - 1) != 48)
-			|| n->num > 2147483647 || n->num < -2147483648)
-			return (2);
 		l = ft_lstnew((void *)n);
 		ft_lstadd_back(&(st->a), l);
 	}
