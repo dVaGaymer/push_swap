@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 22:27:04 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/08/03 16:20:11 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/08/03 17:11:02 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,49 @@ int	is_repeated(t_stack *st, int num)
 	return (0);
 }
 
+int	free_arg(char **subarg)
+{
+	char	**t;
+
+	t = subarg;
+	while (*subarg)
+	{
+		free(*subarg);
+		subarg++;
+	}
+	free(t);
+	return (3);
+}
+
+int	each_arg(t_stack *st, char *arg)
+{
+	long	num;
+	t_num	*n;
+	t_list	*l;
+	char	**subargs;
+	char	**t;
+
+	if (ft_strisalpha(arg))
+		return (3);
+	subargs = ft_split(arg, 32);
+	t = subargs;
+	while (*subargs)
+	{
+		num = ft_atoi(*subargs);
+		if (is_repeated(st, num)
+			|| (num == 0 && **subargs != 48) || num > MAX_INT || num < MIN_INT)
+			return (free_arg(t));
+		n = malloc(sizeof(t_num));
+		n->num = num;
+		l = ft_lstnew((void *)n);
+		ft_lstadd_back(&(st->a), l);
+		subargs++;
+		st->na++;
+	}
+	free_arg(t);
+	return (0);
+}
+
 /*
  * 1 - NO ARGS
  * 2 - ARG NOT A NUMBER
@@ -37,28 +80,19 @@ int	is_repeated(t_stack *st, int num)
  * */
 int	parse_args(int argc, char **argv, t_stack *st)
 {
-	long	num;
-	t_num	*n;
-	t_list	*l;
+	int	err;
 
 	if (!argc)
 		return (1);
-	st->na = argc--;
-	st->total = st->na;
+	st->na = 0;
 	st->nb = 0;
-	while (argc-- >= 0)
+	while (--argc >= 0)
 	{
-		num = ft_atoi(*(argv++));
-		if (is_repeated(st, num))
-			return (3);
-		if ((num == 0 && **(argv - 1) != 48)
-			|| num > (long)2147483647 || num < (long)-2147483648)
-			return (2);
-		n = malloc(sizeof(t_num));
-		n->num = num;
-		l = ft_lstnew((void *)n);
-		ft_lstadd_back(&(st->a), l);
+		err = each_arg(st, *argv++);
+		if (err)
+			return (err);
 	}
+	st->total = st->na;
 	lstorder(st);
 	return (0);
 }

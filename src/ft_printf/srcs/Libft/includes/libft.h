@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 08:06:08 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/08/03 16:19:51 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/08/03 16:58:34 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int					ft_isprint(int c);
 int					ft_isascii(int c);
 int					ft_isdigit(int c);
 int					ft_isalpha(int c);
+int					ft_strisalpha(char *c);
 int					ft_isalnum(int c);
 long				ft_atoi(const char *str);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
