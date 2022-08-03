@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 18:27:00 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/08/03 00:31:16 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/08/03 14:50:17 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	mapper(t_stack st, int n)
 
 void	lstorder(t_stack *stack)
 {
-	int	n;
+	int		n;
 	long	max;
 	t_list	*l;
 
@@ -49,14 +49,14 @@ t_list	*ft_lstmax(t_list *lst, long limit)
 {
 	t_list	*l;
 	long	min;
-	int	aux;
+	int		aux;
 
 	min = (long)-2147483648 - 1;
 	if (!lst)
 		return (0);
 	while (lst->next)
 	{
-		aux =  ((t_num *)(lst->content))->num;
+		aux = ((t_num *)(lst->content))->num;
 		if (aux > min && aux < limit)
 		{
 			min = aux;
