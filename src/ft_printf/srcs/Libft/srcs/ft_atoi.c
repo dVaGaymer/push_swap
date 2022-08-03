@@ -6,14 +6,14 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 09:34:07 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/07/24 05:12:31 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/08/03 16:19:33 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
 	long	aux;
-	int		sign;
+	long	sign;
 
 	aux = 0;
 	sign = 1;
@@ -31,5 +31,5 @@ int	ft_atoi(const char *str)
 		aux = aux * 10 + (*str - 48);
 		str++;
 	}
-	return ((int)(aux * sign));
+	return ((aux * sign));
 }

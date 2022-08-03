@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 22:27:04 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/08/03 14:51:56 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/08/03 16:20:11 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	is_repeated(t_stack *st, int num)
  * */
 int	parse_args(int argc, char **argv, t_stack *st)
 {
-	int		num;
+	long	num;
 	t_num	*n;
 	t_list	*l;
 
@@ -52,7 +52,7 @@ int	parse_args(int argc, char **argv, t_stack *st)
 		if (is_repeated(st, num))
 			return (3);
 		if ((num == 0 && **(argv - 1) != 48)
-			|| num > 2147483647 || num < -2147483648)
+			|| num > (long)2147483647 || num < (long)-2147483648)
 			return (2);
 		n = malloc(sizeof(t_num));
 		n->num = num;
