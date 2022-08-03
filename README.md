@@ -19,5 +19,5 @@ Optimizacion:
 TODO
 -----
 
-- [ ] Seg fault when only this argument: ""
+- [x] Seg fault when only this argument: ""
 - [ ] Check big numbers
