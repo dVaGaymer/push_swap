@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:59:33 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/08/03 17:59:36 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/08/03 22:43:02 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ int	parse_args(int argc, char **argv, t_stack *st)
 	st->nb = 0;
 	while (--argc >= 0)
 	{
+		if (**argv == 0)
+			return (1);
 		err = each_arg(st, *argv++);
 		if (err)
 			return (err);

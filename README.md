@@ -19,6 +19,5 @@ Optimizacion:
 TODO
 -----
 
-- [ ] Optimize
-- [x] Check if list is ordered first
-- [ ] Check if list is ordered but shifted...?
+- [ ] Seg fault when only this argument: ""
+- [ ] Check big numbers
