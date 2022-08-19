@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:59:33 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/08/19 17:02:39 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/08/19 18:45:54 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	is_repeated(t_stack *st, int num)
 	return (0);
 }
 
-int	free_arg(char **subarg)
+int	free_arg(char **subarg, int err)
 {
 	char	**t;
 
@@ -40,8 +40,9 @@ int	free_arg(char **subarg)
 		free(*subarg);
 		subarg++;
 	}
-	free(t);
-	return (3);
+	if (subarg)
+		free(t);
+	return (err);
 }
 
 int	each_arg(t_stack *st, char *arg)
@@ -54,14 +55,14 @@ int	each_arg(t_stack *st, char *arg)
 
 	subargs = ft_split(arg, 32);
 	if (ft_strisalpha(arg) || !*subargs)
-		return (3);
+		return (free_arg(subargs, 3));
 	t = subargs;
 	while (*subargs)
 	{
 		num = ft_atoi(*subargs);
 		if (is_repeated(st, num)
 			|| (num == 0 && **subargs != 48) || num > MAX_INT || num < MIN_INT)
-			return (free_arg(t));
+			return (free_arg(t, 3));
 		n = malloc(sizeof(t_num));
 		n->num = num;
 		l = ft_lstnew((void *)n);
@@ -69,8 +70,7 @@ int	each_arg(t_stack *st, char *arg)
 		subargs++;
 		st->na++;
 	}
-	free_arg(t);
-	return (0);
+	return (free_arg(t, 0));
 }
 
 /*
