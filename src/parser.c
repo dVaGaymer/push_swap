@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:59:33 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/08/03 22:43:02 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/08/19 17:02:39 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ int	each_arg(t_stack *st, char *arg)
 	char	**subargs;
 	char	**t;
 
-	if (ft_strisalpha(arg))
-		return (3);
 	subargs = ft_split(arg, 32);
+	if (ft_strisalpha(arg) || !*subargs)
+		return (3);
 	t = subargs;
 	while (*subargs)
 	{
@@ -84,12 +84,15 @@ int	parse_args(int argc, char **argv, t_stack *st)
 
 	if (!argc)
 		return (1);
+	if (argc)
+		if (**argv == 0)
+			return (3);
 	st->na = 0;
 	st->nb = 0;
 	while (--argc >= 0)
 	{
-		if (**argv == 0)
-			return (1);
+		if (ft_strlen(*argv) == 0)
+			return (3);
 		err = each_arg(st, *argv++);
 		if (err)
 			return (err);
