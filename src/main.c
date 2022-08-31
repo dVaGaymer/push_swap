@@ -6,7 +6,7 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 22:13:53 by alopez-g          #+#    #+#             */
-/*   Updated: 2022/08/19 16:49:30 by alopez-g         ###   ########.fr       */
+/*   Updated: 2022/08/31 13:59:30 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	exit_on_error(t_stack *st, int err)
 		return ;
 	else if (err != 1)
 		ft_putstr_fd("Error\n", 2);
+	else if (err == 1)
+		exit(0);
 	st_clear(st);
 	exit(1);
 }
